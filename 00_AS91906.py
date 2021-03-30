@@ -1,13 +1,35 @@
+#imports 
 from tkinter import *
 import random
 
-class sell:
-    def __innit__(self, parent):
-        print("Hello world")
+# Create a variable to store number of stock
 
-#main route
-if __name__ == "__main__":
-    root = Tk()
-    root.title("Mead Magazine & Comics")
-    something = sell(root)
-    root.mainloop()
+######### Class Code #########
+#create
+class Comic:
+    def __init__(self, stock):
+        self.stock = stock
+        pass
+superdude = Comic(root, 8)
+lizardman = Comic(root, 12)
+waterwoman = Comic(root, 3)
+
+# Functions #
+
+
+########### GUI CODE #####################################################
+root = Tk()
+root.title("Mead Magazine & Comics")
+
+#left frame with sell button
+left_frame = ttkLabelFrame(root, textvariable="Sell Comic Frame")
+left_frame.grid(row=0, coloumn=0, padx=5, pady=5 sticky="NSEW")
+
+
+
+########### END GUI CODE #####################################################
+
+
+
+root.mainloop()
+
