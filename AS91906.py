@@ -4,6 +4,7 @@ from tkinter import ttk
 from tkinter import messagebox
 import random
 
+#Allows for computer to convert binary for comic name into the actual name value eg. Super Dude
 item_name_list = {}
 item_names = []
 
@@ -13,7 +14,7 @@ root.title("Mead Magazine & Comics")
 root.resizable(False,False)
 
 
-######### Class Code #########    Each item in item_names has the same value as the key in item_name_list // value = comic_box.get()  // item_name_list[value].stock 
+######### Class Code #########    
 #create class that holds comic stock levels 
 class Comic:
     
@@ -37,7 +38,8 @@ for item in item_name_list.keys():
     item_names.append(item)
     
 ############ Functions #######################################################
-       #Adds Comics to stock level within parameters
+    
+#Adds Comics to stock level within parameters
 def restock():
     if comic_box_right.get() == "":
         messagebox.showerror("No comic selected!","Please select a comic and try again!")
@@ -83,7 +85,7 @@ def sell():
     update_stock_display()
     
             
-                
+# Adds complexity by keeping a receipt                
 def get_data():
   account_file = open("accounts.txt","r")
   line_list = account_file.readlines()
@@ -94,6 +96,7 @@ def get_data():
 
   account_file.close()
 
+#updates stock display level
 def update_stock_display():
     account_file = open("accounts.txt", "w")
     tempstring = ""
@@ -176,15 +179,15 @@ sold_stock_display.grid(row=0, column=0, padx=10, pady=10)
 
 #### Right Frame Items ####
 
-#right frame with restock button
+#right frame
 right_frame = ttk.LabelFrame(root, text="Restock Comics")
 right_frame.grid(row=1,column=3, padx=10, pady=10, sticky="NSEW")
 
-#Drop down menu with comic selection in right frame 
+#Drop down menu with comic selection in right frame  linked to class values
 comic_box_right = ttk.Combobox(right_frame, state="readonly", values=item_names)
 comic_box_right.grid(row=2, column=2,  padx=10, pady=10)
 
-# variable to store the amount
+#variable to store the amount
 restock_amount = DoubleVar()
 restock_amount.set("")
 
